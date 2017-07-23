@@ -18,7 +18,6 @@ double truncateAt1(double value)
   return value;
 }
 
-
 // Checks if the SocketIO event has JSON data.
 // If there is data the JSON object in string format will be returned,
 // else the empty string "" will be returned.
@@ -39,7 +38,6 @@ std::string hasData(std::string s)
 int main()
 {
   uWS::Hub h;
-  
   // Set a huge number as the initial error
   double best_err = 1000000.0;
   double err = 0.0;
@@ -54,7 +52,6 @@ int main()
   int round = 1;
   int N = 2000; // The larger this value is, the farther the car can drive
   int n_iteration = 0;
-  
   h.onMessage([&pid_steer, &n_iteration, &N, &comp, &p, &dp, &best_err, &errs, &err, &round]
               (uWS::WebSocket<uWS::SERVER> ws,
                char *data, size_t length,
@@ -114,7 +111,7 @@ int main()
                           std::cout << "Best Error Decreased during Steps 1-N." << std::endl;
                           std::cout << "    p[0] = " << p[0] << ", p[1] = " << p[1] << ", p[2] = " << p[2] << std::endl;
                           std::cout << "    dp[0] = " << dp[0] << ", dp[1] = " << dp[1] << ", dp[2] = " << dp[2] << std::endl;
-                          comp++; // procced to next component
+                          comp++; // proceed to next component
                           comp = comp % 3;
                           n_iteration = -1;
                           std::cout << "  Next Process to Component: " << comp << std::endl;
@@ -129,7 +126,7 @@ int main()
                             std::cout << "Best Error Decreased after step N-2N." << std::endl;
                             std::cout << "    p[0] = " << p[0] << ", p[1] = " << p[1] << ", p[2] = " << p[2] << std::endl;
                             std::cout << "    dp[0] = " << dp[0] << ", dp[1] = " << dp[1] << ", dp[2] = " << dp[2] << std::endl;
-                            comp++; // process to next component
+                            comp++; // proceed to next component
                             comp = comp % 3;
                             n_iteration = -1;
                             std::cout << "  Next Process to Component: " << comp << std::endl;
@@ -175,7 +172,6 @@ int main()
                       ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
                       // Go to the next iteration
                       n_iteration++;
-                      
                       /*
                        * TODO: Calcuate steering value here, remember the steering value is
                        * [-1, 1].
@@ -190,7 +186,6 @@ int main()
                   }
                 }
               });
-  
   // We don't need this since we're not using HTTP but if it's removed the program
   // doesn't compile :-(
   h.onHttpRequest([](uWS::HttpResponse *res, uWS::HttpRequest req, char *data, size_t, size_t) {
