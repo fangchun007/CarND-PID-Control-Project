@@ -22,7 +22,8 @@ double truncateAt1(double value)
 // Checks if the SocketIO event has JSON data.
 // If there is data the JSON object in string format will be returned,
 // else the empty string "" will be returned.
-std::string hasData(std::string s) {
+std::string hasData(std::string s) 
+{
   auto found_null = s.find("null");
   auto b1 = s.find_first_of("[");
   auto b2 = s.find_last_of("]");
