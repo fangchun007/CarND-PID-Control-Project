@@ -1,8 +1,8 @@
-In this file, I explain how the PID controllers were designed in this project and how the final hyperparameter were chosen. 
+In this file, I explain how the PID controllers are designed in this project and how the final hyperparameter are chose. 
 
 ## 1. How the PID controllers are designed in my implementation?
 
-Two PID controllers are implemented in this project. One is for the steer control. The other one is for the throttle control. The idea for designing the throttle controller comes from implementation drive.py of the Bahavioral Cloning Project. One can refer to the following link.
+Two PID controllers are implemented in this project. One is for the steer control. The other one is for throttle control. The idea for designing the throttle controller comes from the implementation drive.py of the Bahavioral Cloning Project. One can refer to the following link.
 
 https://github.com/udacity/CarND-Behavioral-Cloning-P3/blob/master/drive.py
 
