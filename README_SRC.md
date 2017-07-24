@@ -10,6 +10,10 @@ Here, we explain the effect of Proportional (P), Integral (I) and Derivative (D)
 
 **P COMPONENT**. Since the purpose of a steering controller is to pull the vehicle back to and maintain it around the reference line. The proportional component is set to cross track error (cte) of the vehicle. The farther the vehicle away from the reference line, the larger steering angle is suggested by the controller. In our case, a small value close zero didn’t turn the vehicle enough and eventually the car go off the road. A larger value, e.g., 1, would make the car oscillate too much. As I see from the test runnings on simulator, if the car cannot make a sharp turn and runs over the lane line, then slightly increase the coefficient of P component would help.
 
+\begin{equation}
+1+1=2
+\end{equation}
+
 **D COMPONENT**. In math, derivatives are used to describe the change rate of curves. In our case, when the coefficient of P component is 0.11, and set the D and I component to zero, the car starts with small oscillations, then big osillations and eventually went off the road. To make the car approach smoothly to the reference line and drive more stable, a derivative component is needed. The sharper of the curve the vehicle made, more errors will be advised by the controller to prevent a further steep movement. Hence, this component can make the car drive smoother and even eliminate oscillations. A good combination of P and D values, as we tested, can actually result in a decent result. 
 
 **I COMPONENT**. This I term is designed to correct for the wheel drift. Suppose the wheel drift is nonzero. The car will always keep a distance from the reference line, whatever you do on P and D components. However, this will accumulate a large value for the sum of ctes. The idea of I component is to use this kind of accumulation to produce a error and feedback to controller. Then the controller will produce a large steering angle. As we found, the car drives well when the I value is small. This suggest a small wheel drift for our simulator.
