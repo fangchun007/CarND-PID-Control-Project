@@ -10,17 +10,15 @@ Here, we explain the effect of Proportional (P), Integral (I) and Derivative (D)
 
 **P COMPONENT**. Since the purpose of a steering controller is to pull the vehicle back to and maintain it around the reference line. The proportional component is set to cross track error (cte) of the vehicle. The farther the vehicle away from the reference line, the larger steering angle is suggested by the controller. In our case, a small value close zero didn’t turn the vehicle enough and eventually the car go off the road. A larger value, e.g., 1, would make the car oscillate too much. As I see from the test runnings on simulator, if the car cannot make a sharp turn and runs over the lane line, then slightly increase the coefficient of P component would help.
 
-$1+1=2$
-
 **D COMPONENT**. In math, derivatives are used to describe the change rate of curves. In our case, when the coefficient of P component is 0.11, and set the D and I component to zero, the car starts with small oscillations, then big osillations and eventually went off the road. To make the car approach smoothly to the reference line and drive more stable, a derivative component is needed. The sharper of the curve the vehicle made, more errors will be advised by the controller to prevent a further steep movement. Hence, this component can make the car drive smoother and even eliminate oscillations. A good combination of P and D values, as we tested, can actually result in a decent result. 
 
 **I COMPONENT**. This I term is designed to correct for the wheel drift. Suppose the wheel drift is nonzero. The car will always keep a distance from the reference line, whatever you do on P and D components. However, this will accumulate a large value for the sum of ctes. The idea of I component is to use this observation to produce an error and feedback to the controller. Then a large steering angle will be produced to eliminate this error. As we test, the car drives well when the I component is very small. This suggest a small or zero wheel drift for our simulator.
 
 ## 2. Hyperparameter Tuning / Optimization.
 
-The P, I, D coefficients are chosen through a combination of manual tuning (in the setting of initial values and adjusting of the length of experimental section) and a revised twiddle algorithm. Here, we only explain the implementation of twiddle algorithm main_steer.cpp. 
+The P, I, D coefficients are chosen through a combination of manual tuning (in the setting of initial values and adjusting of the length of experimental section) and a revised twiddle algorithm. Here, we only explain the implementation of the twiddle algorithm in main_steer.cpp. 
 
-In case you wish to try it by yourself, please just change the original main.cpp to some other names, change its name to main.cpp and run it. 
+In case you wish to try it by yourself, please just change the original main.cpp to some other names, then change its name to main.cpp and run it with cmake and make. 
 
 Once you’ve ever tried parameter manual tuning and run your algorithm on simulator after each revision, you will find it is a time consuming and boring task. Our aim is to finish an algorithm so that the computer itself can figure out good parameters for us. 
 
